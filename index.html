@@ -3,212 +3,113 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Better With Tomo — AI Content Workflow</title>
+<title>Better With Tomo — AI Content Operating System v4</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@700;900&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg:#0d1117; --bg-alt:#161b22; --surface:#1c2128; --border:#30363d; --border-hi:#444c56;
+  --text:#e6edf3; --text-mid:#8b949e; --text-dim:#6e7681;
+  --green:#3fb950; --green-bg:#0f2a18;
+  --gold:#d29922;  --gold-bg:#2a1f00;
+  --blue:#58a6ff;  --blue-bg:#0d1f38;
+  --teal:#39d0b4;  --teal-bg:#0a2520;
+  --rose:#f47067;  --rose-bg:#2a0e0e;
+  --purple:#bc8cff;--purple-bg:#1a0f2e;
+  --l1:#e3b341; --l1-bg:#1c1600;
+  --l2:#39d0b4; --l2-bg:#091c19;
+  --l3:#bc8cff; --l3-bg:#150d24;
+  --l4:#f47067; --l4-bg:#200a09;
+  --l5:#58a6ff; --l5-bg:#081526;
+  --l6:#3fb950; --l6-bg:#081a0e;
+  --l7:#e3b341; --l7-bg:#1c1600;
+}
+body { background:var(--bg); color:var(--text); font-family:'DM Sans',system-ui,sans-serif; min-height:100vh; padding-bottom:80px; }
 
-  :root {
-    --bg:        #0d1117;
-    --bg-alt:    #161b22;
-    --surface:   #1c2128;
-    --border:    #30363d;
-    --border-hi: #444c56;
-    --text:      #e6edf3;
-    --text-mid:  #8b949e;
-    --text-dim:  #6e7681;
-    --green:     #3fb950; --green-bg: #0f2a18;
-    --gold:      #d29922; --gold-bg:  #2a1f00;
-    --blue:      #58a6ff; --blue-bg:  #0d1f38;
-    --teal:      #39d0b4; --teal-bg:  #0a2520;
-    --rose:      #f47067; --rose-bg:  #2a0e0e;
-    --purple:    #bc8cff; --purple-bg:#1a0f2e;
-    --l1: #e3b341; --l1-bg: #1c1600;
-    --l2: #39d0b4; --l2-bg: #091c19;
-    --l3: #bc8cff; --l3-bg: #150d24;
-    --l4: #f47067; --l4-bg: #200a09;
-    --l5: #58a6ff; --l5-bg: #081526;
-    --l6: #3fb950; --l6-bg: #081a0e;
-    --l7: #e3b341; --l7-bg: #1c1600;
-  }
+/* HEADER */
+.header { background:var(--bg-alt); border-bottom:1px solid var(--border); padding:20px 24px 16px; position:sticky; top:0; z-index:50; }
+.header-inner { max-width:960px; margin:0 auto; display:flex; align-items:flex-start; justify-content:space-between; flex-wrap:wrap; gap:12px; }
+.header h1 { font-family:'Fraunces',Georgia,serif; font-weight:900; font-size:22px; color:var(--text); display:flex; align-items:center; gap:10px; margin-bottom:4px; }
+.header p { font-size:12px; color:var(--text-dim); }
+.btn-expand { background:var(--surface); border:1px solid var(--border-hi); border-radius:7px; padding:7px 14px; font-size:12px; font-weight:600; color:var(--text-mid); cursor:pointer; font-family:inherit; transition:all .15s; }
+.btn-expand:hover { color:var(--text); }
 
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'DM Sans', system-ui, sans-serif;
-    min-height: 100vh;
-    padding-bottom: 80px;
-  }
+/* MAIN */
+.main { max-width:960px; margin:0 auto; padding:20px; }
 
-  /* ── HEADER ── */
-  .header {
-    background: var(--bg-alt);
-    border-bottom: 1px solid var(--border);
-    padding: 20px 24px 16px;
-    position: sticky; top: 0; z-index: 50;
-  }
-  .header-inner {
-    max-width: 940px; margin: 0 auto;
-    display: flex; align-items: flex-start;
-    justify-content: space-between; flex-wrap: wrap; gap: 12px;
-  }
-  .header h1 {
-    font-family: 'Fraunces', Georgia, serif;
-    font-weight: 900; font-size: 22px; color: var(--text);
-    display: flex; align-items: center; gap: 10px; margin-bottom: 4px;
-  }
-  .header p { font-size: 12px; color: var(--text-dim); }
-  .btn-expand {
-    background: var(--surface); border: 1px solid var(--border-hi);
-    border-radius: 7px; padding: 7px 14px;
-    font-size: 12px; font-weight: 600; color: var(--text-mid);
-    cursor: pointer; font-family: inherit; transition: all .15s;
-  }
-  .btn-expand:hover { color: var(--text); border-color: var(--text-dim); }
+/* LEGEND */
+.legend { display:flex; flex-wrap:wrap; gap:10px; align-items:center; padding:10px 14px; background:var(--bg-alt); border:1px solid var(--border); border-radius:8px; margin-bottom:16px; }
+.legend-group { display:flex; gap:6px; flex-wrap:wrap; align-items:center; }
+.legend-lbl { font-size:10px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--text-dim); }
+.legend-sep { width:1px; height:20px; background:var(--border); }
+.badge { display:inline-block; font-size:10px; font-weight:700; border-radius:3px; padding:2px 7px; border:1px solid; white-space:nowrap; }
+.legend-note { font-size:10px; color:var(--text-dim); }
 
-  /* ── MAIN ── */
-  .main { max-width: 940px; margin: 0 auto; padding: 20px; }
+/* STATUS BANNER */
+.status-banner { background:var(--teal-bg); border:1px solid color-mix(in srgb,var(--teal) 30%,transparent); border-radius:10px; padding:12px 16px; margin-bottom:16px; font-size:12px; color:var(--text-mid); line-height:1.7; }
+.status-banner .hi { color:var(--teal); font-weight:700; }
+.status-banner strong { color:var(--text); }
 
-  /* ── LEGEND ── */
-  .legend {
-    display: flex; flex-wrap: wrap; gap: 10px; align-items: center;
-    padding: 10px 14px; background: var(--bg-alt);
-    border: 1px solid var(--border); border-radius: 8px; margin-bottom: 16px;
-  }
-  .legend-group { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; }
-  .legend-label { font-size: 10px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--text-dim); }
-  .legend-sep { width: 1px; height: 20px; background: var(--border); }
-  .badge {
-    display: inline-block; font-size: 10px; font-weight: 700;
-    border-radius: 3px; padding: 2px 7px; border: 1px solid; white-space: nowrap;
-  }
-  .legend-note { font-size: 10px; color: var(--text-dim); }
+/* FLOW ARROW */
+.flow-arrow { display:flex; flex-direction:column; align-items:center; padding:2px 0; }
+.flow-arrow .ln { width:1px; height:14px; background:var(--border-hi); }
+.flow-arrow .tip { width:0; height:0; border-left:5px solid transparent; border-right:5px solid transparent; border-top:6px solid var(--border-hi); }
 
-  /* ── WHAT'S NEW ── */
-  .whats-new {
-    background: var(--teal-bg); border: 1px solid color-mix(in srgb, var(--teal) 40%, transparent);
-    border-radius: 10px; padding: 12px 16px; margin-bottom: 16px;
-    font-size: 12px; color: var(--text-mid); line-height: 1.7;
-  }
-  .whats-new strong.label { color: var(--teal); font-weight: 700; }
-  .whats-new strong { color: var(--text); }
+/* LAYER */
+.layer { margin-bottom:3px; }
+.layer-btn { width:100%; text-align:left; cursor:pointer; font-family:inherit; background:var(--bg-alt); border:1px solid var(--border); border-radius:10px; padding:12px 16px; display:flex; align-items:center; gap:12px; transition:all .15s; }
+.layer-btn:hover { border-color:var(--border-hi); }
+.layer-btn.open { background:var(--layer-bg); border-color:color-mix(in srgb,var(--layer-color) 40%,transparent); box-shadow:0 0 24px color-mix(in srgb,var(--layer-color) 10%,transparent); }
+.layer-icon { width:30px; height:30px; border-radius:7px; flex-shrink:0; display:flex; align-items:center; justify-content:center; font-size:15px; background:color-mix(in srgb,var(--layer-color) 15%,transparent); border:1px solid color-mix(in srgb,var(--layer-color) 30%,transparent); }
+.layer-meta { flex:1; min-width:0; }
+.layer-title-row { display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
+.layer-title { font-family:'Fraunces',Georgia,serif; font-weight:700; font-size:15px; color:var(--text); transition:color .15s; }
+.layer-btn.open .layer-title { color:var(--layer-color); }
+.layer-num { font-size:9px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--layer-color); background:color-mix(in srgb,var(--layer-color) 12%,transparent); border:1px solid color-mix(in srgb,var(--layer-color) 25%,transparent); border-radius:3px; padding:2px 6px; }
+.layer-sub { font-size:11px; color:var(--text-dim); margin-top:2px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.layer-chevron { color:var(--layer-color); font-size:14px; transition:transform .15s; flex-shrink:0; }
+.layer-btn.open .layer-chevron { transform:rotate(180deg); }
 
-  /* ── FLOW ARROW ── */
-  .flow-arrow {
-    display: flex; flex-direction: column; align-items: center; padding: 2px 0;
-  }
-  .flow-arrow .line { width: 1px; height: 14px; background: var(--border-hi); }
-  .flow-arrow .tip { width: 0; height: 0; border-left: 5px solid transparent; border-right: 5px solid transparent; border-top: 6px solid var(--border-hi); }
+/* LAYER BODY */
+.layer-body { padding:12px 4px 4px; }
+.layer-summary { font-size:12px; color:var(--text-mid); line-height:1.65; margin:0 0 12px 4px; }
+.nodes-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(290px,1fr)); gap:8px; }
 
-  /* ── LAYER ── */
-  .layer { margin-bottom: 3px; }
-  .layer-header {
-    width: 100%; text-align: left; cursor: pointer; font-family: inherit;
-    border-radius: 10px; padding: 12px 16px;
-    display: flex; align-items: center; gap: 12px;
-    transition: all .15s; border: 1px solid var(--border);
-    background: var(--bg-alt);
-  }
-  .layer-header:hover { border-color: var(--border-hi); }
-  .layer-header.open { background: var(--layer-bg, var(--bg-alt)); border-color: color-mix(in srgb, var(--layer-color) 40%, transparent); }
-  .layer-icon {
-    width: 30px; height: 30px; border-radius: 7px; flex-shrink: 0;
-    display: flex; align-items: center; justify-content: center; font-size: 15px;
-    background: color-mix(in srgb, var(--layer-color) 15%, transparent);
-    border: 1px solid color-mix(in srgb, var(--layer-color) 30%, transparent);
-  }
-  .layer-meta { flex: 1; min-width: 0; }
-  .layer-title-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
-  .layer-title {
-    font-family: 'Fraunces', Georgia, serif; font-weight: 700; font-size: 15px;
-    color: var(--text); transition: color .15s;
-  }
-  .layer-header.open .layer-title { color: var(--layer-color); }
-  .layer-num {
-    font-size: 9px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
-    color: var(--layer-color);
-    background: color-mix(in srgb, var(--layer-color) 12%, transparent);
-    border: 1px solid color-mix(in srgb, var(--layer-color) 25%, transparent);
-    border-radius: 3px; padding: 2px 6px;
-  }
-  .layer-subtitle { font-size: 11px; color: var(--text-dim); margin-top: 2px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-  .layer-chevron { color: var(--layer-color); font-size: 14px; transition: transform .15s; flex-shrink: 0; }
-  .layer-header.open .layer-chevron { transform: rotate(180deg); }
+/* NODE CARD */
+.node-card { background:var(--surface); border:1px solid var(--border); border-radius:9px; padding:11px 13px; }
+.node-top { display:flex; align-items:flex-start; justify-content:space-between; gap:8px; margin-bottom:8px; }
+.node-label { font-size:12px; font-weight:600; color:var(--text); line-height:1.3; flex:1; }
+.node-tools { display:flex; flex-wrap:wrap; gap:5px; margin-bottom:8px; }
+.node-note { font-size:11px; color:var(--text-dim); line-height:1.55; padding:6px 9px; background:var(--bg); border-radius:5px; border-left:2px solid color-mix(in srgb,var(--layer-color) 40%,transparent); }
 
-  /* ── LAYER BODY ── */
-  .layer-body { padding: 12px 4px 4px; }
-  .layer-summary { font-size: 12px; color: var(--text-mid); line-height: 1.65; margin: 0 0 12px 4px; }
-  .nodes-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 8px; }
+/* TOOL CHIP */
+.tool-chip { display:inline-flex; align-items:center; gap:5px; background:var(--surface); border:1px solid var(--border); border-radius:6px; padding:4px 9px; cursor:pointer; transition:all .12s; font-family:inherit; }
+.tool-chip:hover { border-color:var(--chip-color); background:var(--chip-bg); }
+.tool-chip.active { border-color:var(--chip-color); background:var(--chip-bg); box-shadow:0 0 10px color-mix(in srgb,var(--chip-color) 20%,transparent); }
+.chip-name { font-size:11px; font-weight:600; color:var(--text-mid); transition:color .12s; white-space:nowrap; }
+.tool-chip.active .chip-name { color:var(--chip-color); }
+.chip-cost { font-size:9px; font-weight:700; letter-spacing:.05em; color:var(--chip-color); background:var(--chip-bg); border:1px solid color-mix(in srgb,var(--chip-color) 30%,transparent); border-radius:3px; padding:1px 4px; }
 
-  /* ── NODE CARD ── */
-  .node-card { background: var(--surface); border: 1px solid var(--border); border-radius: 9px; padding: 11px 13px; }
-  .node-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; margin-bottom: 8px; }
-  .node-label { font-size: 12px; font-weight: 600; color: var(--text); line-height: 1.3; flex: 1; }
-  .node-label::before { content: '› '; color: var(--layer-color); }
-  .node-tools { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 8px; }
-  .node-note {
-    font-size: 11px; color: var(--text-dim); line-height: 1.55;
-    padding: 6px 9px; background: var(--bg); border-radius: 5px;
-    border-left: 2px solid color-mix(in srgb, var(--layer-color) 40%, transparent);
-  }
+/* TOOL POPUP */
+.tool-popup { position:fixed; bottom:20px; right:20px; width:320px; z-index:200; background:var(--bg-alt); border-radius:12px; padding:14px 16px; box-shadow:0 8px 40px rgba(0,0,0,.6); border:1px solid color-mix(in srgb,var(--popup-color) 40%,transparent); animation:popIn .15s ease; }
+@keyframes popIn { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:none} }
+.popup-header { display:flex; align-items:flex-start; justify-content:space-between; margin-bottom:8px; }
+.popup-title { font-family:'Fraunces',Georgia,serif; font-weight:700; font-size:14px; color:var(--text); display:flex; align-items:center; gap:8px; }
+.popup-close { background:none; border:none; color:var(--text-dim); cursor:pointer; font-size:18px; line-height:1; padding:0; }
+.popup-close:hover { color:var(--text); }
+.popup-cost { display:inline-block; margin-bottom:10px; }
+.popup-note { font-size:12px; color:var(--text-mid); line-height:1.65; margin-bottom:10px; }
+.popup-url { display:inline-block; font-size:11px; text-decoration:none; border-radius:4px; padding:4px 10px; border:1px solid color-mix(in srgb,var(--popup-color) 25%,transparent); color:var(--popup-color); background:var(--popup-bg); }
+.popup-url:hover { opacity:.8; }
 
-  /* ── TOOL CHIP ── */
-  .tool-chip {
-    display: inline-flex; align-items: center; gap: 5px;
-    background: var(--surface); border: 1px solid var(--border);
-    border-radius: 6px; padding: 4px 9px; cursor: pointer;
-    transition: all .12s; font-family: inherit; font-size: 11px;
-  }
-  .tool-chip:hover { border-color: var(--chip-color, var(--text-dim)); background: var(--chip-bg, var(--surface)); }
-  .tool-chip.active { border-color: var(--chip-color); background: var(--chip-bg); box-shadow: 0 0 10px color-mix(in srgb, var(--chip-color) 20%, transparent); }
-  .tool-chip .chip-name { font-weight: 600; color: var(--text-mid); transition: color .12s; }
-  .tool-chip.active .chip-name { color: var(--chip-color); }
-  .tool-chip .chip-cost {
-    font-size: 9px; font-weight: 700; letter-spacing: .05em;
-    color: var(--chip-color); background: var(--chip-bg);
-    border: 1px solid color-mix(in srgb, var(--chip-color) 30%, transparent);
-    border-radius: 3px; padding: 1px 4px;
-  }
+/* FEEDBACK BOX */
+.feedback-box { margin-top:16px; padding:12px 16px; background:var(--gold-bg); border:1px solid color-mix(in srgb,var(--gold) 30%,transparent); border-radius:10px; display:flex; gap:10px; align-items:flex-start; }
+.feedback-icon { font-size:20px; flex-shrink:0; }
+.feedback-title { font-weight:700; color:var(--gold); font-size:13px; margin-bottom:3px; }
+.feedback-text { font-size:11px; color:var(--text-mid); line-height:1.6; }
 
-  /* ── TOOL DETAIL POPUP ── */
-  .tool-popup {
-    position: fixed; bottom: 20px; right: 20px; width: 310px; z-index: 200;
-    background: var(--bg-alt); border-radius: 12px; padding: 14px 16px;
-    box-shadow: 0 8px 40px rgba(0,0,0,.6);
-    border: 1px solid color-mix(in srgb, var(--popup-color) 40%, transparent);
-    animation: popIn .15s ease;
-  }
-  @keyframes popIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
-  .popup-header { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 8px; }
-  .popup-title { font-family: 'Fraunces', Georgia, serif; font-weight: 700; font-size: 14px; color: var(--text); display: flex; align-items: center; gap: 8px; }
-  .popup-close { background: none; border: none; color: var(--text-dim); cursor: pointer; font-size: 18px; line-height: 1; padding: 0; }
-  .popup-close:hover { color: var(--text); }
-  .popup-cost { display: inline-block; margin-bottom: 10px; }
-  .popup-note { font-size: 12px; color: var(--text-mid); line-height: 1.65; margin-bottom: 10px; }
-  .popup-url {
-    display: inline-block; font-size: 11px; text-decoration: none;
-    border-radius: 4px; padding: 4px 10px;
-    color: var(--popup-color); background: var(--popup-bg);
-    border: 1px solid color-mix(in srgb, var(--popup-color) 25%, transparent);
-    transition: opacity .15s;
-  }
-  .popup-url:hover { opacity: .8; }
-
-  /* ── FEEDBACK BOX ── */
-  .feedback-box {
-    margin-top: 16px; padding: 12px 16px;
-    background: var(--gold-bg); border: 1px solid color-mix(in srgb, var(--gold) 30%, transparent);
-    border-radius: 10px; display: flex; gap: 10px; align-items: flex-start;
-  }
-  .feedback-icon { font-size: 20px; flex-shrink: 0; }
-  .feedback-title { font-weight: 700; color: var(--gold); font-size: 13px; margin-bottom: 3px; }
-  .feedback-text { font-size: 11px; color: var(--text-mid); line-height: 1.6; }
-
-  /* scrollbar */
-  ::-webkit-scrollbar { width: 4px; } 
-  ::-webkit-scrollbar-track { background: var(--bg); }
-  ::-webkit-scrollbar-thumb { background: var(--border-hi); border-radius: 2px; }
+::-webkit-scrollbar { width:4px; } ::-webkit-scrollbar-track { background:var(--bg); } ::-webkit-scrollbar-thumb { background:var(--border-hi); border-radius:2px; }
 </style>
 </head>
 <body>
@@ -216,8 +117,8 @@
 <div class="header">
   <div class="header-inner">
     <div>
-      <h1><span>🐾</span> Better With Tomo</h1>
-      <p>AI Content Workflow v3 — proxy research · Apple Notes · AI blog drafting · Linux automation</p>
+      <h1><span>🐾</span>Better With Tomo</h1>
+      <p>AI Content Operating System — v4 · Built &amp; tested May 14, 2026</p>
     </div>
     <button class="btn-expand" id="expandBtn" onclick="toggleAll()">Expand all</button>
   </div>
@@ -225,17 +126,16 @@
 
 <div class="main">
 
-  <!-- LEGEND -->
   <div class="legend">
     <div class="legend-group">
-      <span class="legend-label">Cost</span>
+      <span class="legend-lbl">Cost</span>
       <span class="badge" style="color:var(--green);background:var(--green-bg);border-color:color-mix(in srgb,var(--green) 30%,transparent)">Free / OSS</span>
       <span class="badge" style="color:var(--gold);background:var(--gold-bg);border-color:color-mix(in srgb,var(--gold) 30%,transparent)">You own it</span>
       <span class="badge" style="color:var(--blue);background:var(--blue-bg);border-color:color-mix(in srgb,var(--blue) 30%,transparent)">Freemium</span>
     </div>
     <div class="legend-sep"></div>
     <div class="legend-group">
-      <span class="legend-label">Work</span>
+      <span class="legend-lbl">Work</span>
       <span class="badge" style="color:var(--teal);background:var(--teal-bg);border-color:color-mix(in srgb,var(--teal) 30%,transparent)">⚡ Automated</span>
       <span class="badge" style="color:var(--rose);background:var(--rose-bg);border-color:color-mix(in srgb,var(--rose) 30%,transparent)">✋ Manual</span>
       <span class="badge" style="color:var(--purple);background:var(--purple-bg);border-color:color-mix(in srgb,var(--purple) 30%,transparent)">⚡✋ Mixed</span>
@@ -243,13 +143,14 @@
     <span class="legend-note">· Click any tool chip for details</span>
   </div>
 
-  <!-- WHAT'S NEW -->
-  <div class="whats-new">
-    <strong class="label">What's in v3: </strong>
-    Layer 1 uses <strong>proxy sources</strong> (Reddit, Amazon reviews) — right for where you are now.
-    <strong>Apple Notes</strong> for mobile idea capture.
-    <strong>Claude writes full blog drafts</strong> with a 3-step edit pipeline.
-    <strong>n8n moved to Linux desktop</strong> — DS1511+ NAS is too old for Docker.
+  <div class="status-banner">
+    <span class="hi">What's live as of today: </span>
+    <strong>n8n workflow fully tested and running</strong> on Linux desktop (sleep disabled via systemctl mask).
+    Inputs: <strong>Miniflux RSS categories</strong> (Reddit cat.2, News cat.3) +
+    <strong>Gmail competitor emails</strong> + <strong>Milled.com</strong> digests.
+    Model: <strong>claude-sonnet-4-6</strong>.
+    First report generated — captured live Wild One stockout opportunity and puppy training class treat pouch thread.
+    Report fires <strong>every Monday at 8am</strong> → Google Drive + msylvester@live.com.
   </div>
 
   <div id="workflow"></div>
@@ -258,13 +159,12 @@
     <span class="feedback-icon">↺</span>
     <div>
       <div class="feedback-title">Layer 07 feeds back into Layer 01</div>
-      <div class="feedback-text">Winning content → update Brand Brain → smarter AI research next cycle. As Tomo grows, real customer pain points gradually replace proxy sources in Layer 1.</div>
+      <div class="feedback-text">Winning content → update Brand Brain sections 15 &amp; 16 → smarter Claude research next cycle → better Monday reports. As your audience grows, real customer reviews and DMs gradually replace proxy sources in Layer 1. The system gets smarter every month you use it.</div>
     </div>
   </div>
 
 </div>
 
-<!-- TOOL DETAIL POPUP -->
 <div class="tool-popup" id="toolPopup" style="display:none">
   <div class="popup-header">
     <div class="popup-title"><span id="popupIcon"></span><span id="popupName"></span></div>
@@ -276,245 +176,220 @@
 </div>
 
 <script>
-// ── DATA ──────────────────────────────────────────────────────────────────────
-
 const COST = {
-  free:     { color: 'var(--green)',  bg: 'var(--green-bg)',  label: 'Free' },
-  owned:    { color: 'var(--gold)',   bg: 'var(--gold-bg)',   label: 'You own it' },
-  freemium: { color: 'var(--blue)',   bg: 'var(--blue-bg)',   label: 'Freemium' },
-  paid:     { color: 'var(--rose)',   bg: 'var(--rose-bg)',   label: 'Paid' },
+  free:     {color:'var(--green)', bg:'var(--green-bg)', label:'Free'},
+  owned:    {color:'var(--gold)',  bg:'var(--gold-bg)',  label:'You own it'},
+  freemium: {color:'var(--blue)',  bg:'var(--blue-bg)',  label:'Freemium'},
 };
 const MODE = {
-  auto:   { color: 'var(--teal)',   bg: 'var(--teal-bg)',   label: '⚡ Automated' },
-  manual: { color: 'var(--rose)',   bg: 'var(--rose-bg)',   label: '✋ Manual' },
-  both:   { color: 'var(--purple)', bg: 'var(--purple-bg)', label: '⚡✋ Mixed' },
+  auto:   {color:'var(--teal)',   bg:'var(--teal-bg)',   label:'⚡ Automated'},
+  manual: {color:'var(--rose)',   bg:'var(--rose-bg)',   label:'✋ Manual'},
+  both:   {color:'var(--purple)', bg:'var(--purple-bg)', label:'⚡✋ Mixed'},
 };
 
 const TOOLS = {
-  claude:     { name:'Claude Projects',  icon:'🤖', cost:'owned',    note:'Your primary AI. System prompt = Brand Brain. Google Drive MCP already connected. Drafts full blog posts, captions, scripts.', url:'claude.ai' },
-  chatgpt:    { name:'ChatGPT Plus',     icon:'🤖', cost:'owned',    note:'Secondary AI. Best for live web browsing, keyword research, and image analysis of competitor creatives.', url:'chat.openai.com' },
-  ollama:     { name:'Ollama (local)',   icon:'💻', cost:'free',     note:'Run open-source models locally on your Linux desktop. Free, private, no token costs. Good for batch reformatting tasks.', url:'ollama.com' },
-  gdrive:     { name:'Google Drive',     icon:'📁', cost:'free',     note:'15GB free. Already MCP-connected to Claude. Your central file hub — everything important lives here.', url:'drive.google.com' },
-  obsidian:   { name:'Obsidian',         icon:'🧠', cost:'free',     note:'Local plain-text notes on your computer. Your private thinking space — ideas, Brand Brain working copy, research notes. Files are yours forever.', url:'obsidian.md' },
-  applenotes: { name:'Apple Notes',      icon:'📱', cost:'free',     note:'Already on your iPhone. Fastest way to capture ideas away from your desk. Syncs to Mac via iCloud instantly. No setup needed.', url:'' },
-  syncthing:  { name:'Syncthing',        icon:'🔄', cost:'free',     note:'Syncs Obsidian vault between Linux desktop and MacBook automatically. Free, private, no cloud middleman.', url:'syncthing.net' },
-  miniflux:   { name:'Miniflux (RSS)',   icon:'📡', cost:'free',     note:'Self-hosted RSS reader on your Linux desktop. Subscribe to competitor blogs — new posts come to you automatically.', url:'miniflux.app' },
-  galerts:    { name:'Google Alerts',    icon:'🔔', cost:'free',     note:'Free keyword monitoring. Set alerts for competitor brand names and product categories. Daily email digest.', url:'google.com/alerts' },
-  exploding:  { name:'Exploding Topics', icon:'📈', cost:'freemium', note:'Spot emerging trends before they peak. Free tier is enough for quarterly market research sessions.', url:'explodingtopics.com' },
-  reddit:     { name:'Reddit',           icon:'💬', cost:'free',     note:'r/dogs, r/dogtraining, r/puppy101. Real pain points from real dog owners. Search your product category and read the top posts.', url:'reddit.com' },
-  amazon:     { name:'Amazon Reviews',   icon:'⭐', cost:'free',     note:'Search competitor products. Read 3-star reviews — that\'s where the honest pain points and complaints live.', url:'amazon.com' },
-  ytdlp:      { name:'yt-dlp',           icon:'⬇️', cost:'free',     note:'Archive competitor TikToks/Reels locally for hook analysis. Command-line tool, works on Linux and Mac.', url:'github.com/yt-dlp' },
-  n8n:        { name:'n8n (Linux)',      icon:'⚙️', cost:'free',     note:'Self-hosted automation on your Linux desktop (not NAS — DS1511+ is too old for Docker). Trigger Claude API → save reports to Drive.', url:'n8n.io' },
-  make:       { name:'Make.com',         icon:'⚙️', cost:'freemium', note:'Cloud automation alternative to n8n. 1,000 ops/month free. Easier to set up, no server needed. Good starting point.', url:'make.com' },
-  cron:       { name:'cron + bash',      icon:'🖥️', cost:'free',     note:'Already on your Linux desktop. Schedule simple weekly scripts — no extra software needed.', url:'' },
-  gdocs:      { name:'Google Docs',      icon:'📄', cost:'free',     note:'Where Claude writes your blog drafts. Claude MCP reads and writes to Docs directly. Your editing workspace.', url:'docs.google.com' },
-  vscode:     { name:'VS Code',          icon:'📝', cost:'free',     note:'Optional writing environment. Markdown support, Git history, scriptable. Good for batch social content formatting.', url:'code.visualstudio.com' },
-  ltool:      { name:'LanguageTool',     icon:'✅', cost:'free',     note:'Self-hosted grammar and style checker. VS Code and browser extensions available. Free Grammarly replacement.', url:'languagetool.org' },
-  canva:      { name:'Canva (free)',     icon:'🎨', cost:'freemium', note:'Fastest way to make Instagram graphics, Pinterest pins, and TikTok cover frames. Free tier covers solo creator needs.', url:'canva.com' },
-  gimp:       { name:'GIMP',             icon:'🖼️', cost:'free',     note:'Professional photo editing on Linux. Free Photoshop alternative. Good for product photos and blog header images.', url:'gimp.org' },
-  kdenlive:   { name:'Kdenlive',         icon:'🎬', cost:'free',     note:'Open-source video editor, native Linux support. For editing TikTok/Reels footage.', url:'kdenlive.org' },
-  davinci:    { name:'DaVinci Resolve',  icon:'🎬', cost:'freemium', note:'Industry-standard free video editor. More powerful than Kdenlive. Heavier — better for detailed edit sessions.', url:'blackmagicdesign.com' },
-  shopify:    { name:'Shopify Blog',     icon:'🛒', cost:'owned',    note:'Already paying. Use the blog fully — SEO-friendly, integrated with your store. Paste final draft from Google Docs.', url:'' },
-  instagram:  { name:'Instagram',        icon:'📸', cost:'free',     note:'Manual publish. Authenticity matters more than scheduling for a small brand. Real Tomo moments perform best.', url:'instagram.com' },
-  tiktok:     { name:'TikTok',           icon:'🎵', cost:'free',     note:'Manual publish. Organic reach still possible. Film real moments — raw and real outperforms polished for dog content.', url:'tiktok.com' },
-  pinterest:  { name:'Pinterest',        icon:'📌', cost:'free',     note:'High ROI for product brands. Repurpose blog cover graphics. Canva exports in correct dimensions.', url:'pinterest.com' },
-  buffer:     { name:'Buffer (free)',    icon:'📅', cost:'freemium', note:'Schedule up to 10 posts per channel free. Batch-schedule a week of Instagram posts on Sunday evenings.', url:'buffer.com' },
-  ganalytics: { name:'Google Analytics', icon:'📊', cost:'free',     note:'Track blog traffic, top pages, and referral sources. Free, integrates with Shopify.', url:'analytics.google.com' },
-  gsheets:    { name:'Google Sheets',    icon:'📊', cost:'free',     note:'Manual social performance tracking. Claude can analyze a CSV export to find content patterns.', url:'sheets.google.com' },
+  claude:     {name:'Claude Projects',        icon:'🤖', cost:'owned',    note:'Primary AI + manual research agent. Brand Brain loaded as system prompt. BWT Project set up with full brand context. Model used via API: claude-sonnet-4-6.', url:'claude.ai'},
+  claudeapi:  {name:'Claude API (n8n node)',  icon:'🤖', cost:'owned',    note:'Claude called automatically via n8n Anthropic node. Model: claude-sonnet-4-6. API key from console.anthropic.com. ~$0.03 per weekly report. $20 balance loaded.', url:'console.anthropic.com'},
+  chatgpt:    {name:'ChatGPT Plus',           icon:'🤖', cost:'owned',    note:'Secondary AI. Best for live web browsing, keyword research, and image analysis of competitor creatives. Use alongside Claude.', url:'chat.openai.com'},
+  gdrive:     {name:'Google Drive',           icon:'📁', cost:'free',     note:'Modest Pup → BWT-Marketing. 7 subfolders: 1.Brand Brain, 2.Competitor Reports, 3.Content Ideas, 4.Blog Drafts, 5.Social Content, 6.Screenshots+Inspiration, 7.Research Archive. MCP connected to Claude.', url:'drive.google.com'},
+  obsidian:   {name:'Obsidian',               icon:'🧠', cost:'free',     note:'Installed on Linux desktop and MacBook. Vault at ~/Documents/BWT-Vault. 7 folders matching Drive. Brand Brain working copy lives here. Synced via Syncthing.', url:'obsidian.md'},
+  applenotes: {name:'Apple Notes',            icon:'📱', cost:'free',     note:'iPhone idea capture — always open, zero setup. Syncs to MacBook via iCloud automatically. Batch-move notes to Obsidian during Monday planning session.', url:''},
+  syncthing:  {name:'Syncthing',              icon:'🔄', cost:'free',     note:'Running as systemd user service on Linux. Syncs BWT-Vault between Linux desktop and MacBook. Private Dropbox replacement — no cloud middleman.', url:'syncthing.net'},
+  asana:      {name:'Asana',                  icon:'📋', cost:'freemium', note:'BWT Workflow Setup project created with all setup tasks across 7 phases + SEO fixes. Connected to Claude via MCP. Use for tracking all progress.', url:'asana.com'},
+  miniflux:   {name:'Miniflux (Linux Docker)',icon:'📡', cost:'free',     note:'Running on Linux desktop via Docker (port 8080). Category 2 = Reddit (r/dogtraining, r/dogs, r/puppy101). Category 3 = News/Competitors. API key used by n8n workflow.', url:'miniflux.app'},
+  gmail:      {name:'Gmail (competitor label)',icon:'📧',cost:'free',     note:'Email forwarding rules route competitor marketing emails to a dedicated label. n8n Gmail node reads this label weekly. Also used to send finished report to Michael.', url:'gmail.com'},
+  milled:     {name:'Milled.com',             icon:'📨', cost:'free',     note:'Newsletter aggregator. Subscribed to Wilderdog and competitor brands. Digest emails forwarded to competitor Gmail label. Captured full Wilderdog email in first test run.', url:'milled.com'},
+  galerts:    {name:'Google Alerts',          icon:'🔔', cost:'free',     note:'Configured: Wild One, Wilderdog, Voila Pets, Puppington, Mighty Paw + product keywords + BWT brand name. Digest delivery, once daily, all alerts at same time = one combined email.', url:'google.com/alerts'},
+  exploding:  {name:'Exploding Topics',       icon:'📈', cost:'freemium', note:'Quarterly trend research. Search dog walking, training accessories, pet lifestyle. Save results to Drive 7.Research Archive.', url:'explodingtopics.com'},
+  reddit:     {name:'Reddit (via Miniflux)',  icon:'💬', cost:'free',     note:'r/dogtraining, r/dogs, r/puppy101 subscribed as RSS in Miniflux Category 2. Automatically collected. First run captured puppy training class treat pouch thread — direct BWT sales opportunity.', url:'reddit.com'},
+  amazon:     {name:'Amazon Reviews',         icon:'⭐', cost:'free',     note:'Manual monthly research. Scan 3-star reviews on competitor products — honest pain points live in the middle-ground reviews. As your own customer base grows, replace with real review data.', url:'amazon.com'},
+  ytdlp:      {name:'yt-dlp',                icon:'⬇️', cost:'free',     note:'Manual — save competitor Reels/TikToks for hook analysis. Store in 6.Screenshots+Inspiration/Competitors/[Brand]. Note: Claude cannot view videos — this folder is for your personal reference only.', url:'github.com/yt-dlp'},
+  n8n:        {name:'n8n (Linux Desktop)',    icon:'⚙️', cost:'free',     note:'Running on Linux desktop via Docker (port 5678). Sleep disabled via systemctl mask. 7-node workflow: Schedule → Fetch Reddit → Fetch News → Fetch Emails → Merge → Code → Claude API → Save Drive → Email Michael. Fires every Monday 8am.', url:'n8n.io'},
+  gdocs:      {name:'Google Docs',            icon:'📄', cost:'free',     note:'Where Claude writes full blog drafts. Claude MCP reads and writes to Docs directly. Your editing workspace — not a blank page.', url:'docs.google.com'},
+  vscode:     {name:'VS Code',                icon:'📝', cost:'free',     note:'Optional writing environment. Markdown support, Git history, scriptable. Installed on both Linux and Mac.', url:'code.visualstudio.com'},
+  ltool:      {name:'LanguageTool',           icon:'✅', cost:'free',     note:'Self-hosted grammar checker via Docker. VS Code extension + browser extension available. Free Grammarly replacement.', url:'languagetool.org'},
+  canva:      {name:'Canva (free)',           icon:'🎨', cost:'freemium', note:'Fastest for Instagram graphics, Pinterest pins, TikTok cover frames. Free tier covers solo creator needs.', url:'canva.com'},
+  gimp:       {name:'GIMP',                   icon:'🖼️', cost:'free',     note:'Professional photo editing on Linux. Free Photoshop alternative. For product photos and blog header images.', url:'gimp.org'},
+  kdenlive:   {name:'Kdenlive',               icon:'🎬', cost:'free',     note:'Open-source video editor, native Linux. For editing TikTok/Reels footage.', url:'kdenlive.org'},
+  davinci:    {name:'DaVinci Resolve',        icon:'🎬', cost:'freemium', note:'Industry-standard free video editor. More powerful than Kdenlive for color grading.', url:'blackmagicdesign.com'},
+  shopify:    {name:'Shopify Blog',           icon:'🛒', cost:'owned',    note:'Already paying. Write in Google Docs, ask Claude to format meta description + alt text, paste into Shopify. Manual publish — you control timing.', url:''},
+  instagram:  {name:'Instagram',              icon:'📸', cost:'free',     note:'Manual publish. Authenticity matters more than scheduling. Real Tomo/Barley moments outperform polished content.', url:'instagram.com'},
+  tiktok:     {name:'TikTok',                 icon:'🎵', cost:'free',     note:'Manual publish. Claude writes 3 hook variants — you pick one, rewrite in your voice, then film. Always manual filming.', url:'tiktok.com'},
+  pinterest:  {name:'Pinterest',              icon:'📌', cost:'free',     note:'High ROI for product brands. Repurpose every blog post as a Pinterest pin. Canva exports at correct dimensions.', url:'pinterest.com'},
+  buffer:     {name:'Buffer (free)',          icon:'📅', cost:'freemium', note:'Optional. Schedule up to 10 posts per channel free. Batch-schedule a week of Instagram posts on Sunday evenings.', url:'buffer.com'},
+  ganalytics: {name:'Google Analytics',       icon:'📊', cost:'free',     note:'Track blog traffic, top pages, referral sources. Integrates with Shopify.', url:'analytics.google.com'},
+  gsheets:    {name:'Google Sheets',          icon:'📊', cost:'free',     note:'Manual social performance tracking. Monthly: export top posts to CSV, ask Claude to find patterns in what\'s working.', url:'sheets.google.com'},
 };
 
 const LAYERS = [
   {
     id:'inputs', num:'01', label:'Input Sources', icon:'📥', color:'var(--l1)', bg:'var(--l1-bg)', mode:'both',
-    summary:'Where intelligence comes from. Some inputs are fully automated (RSS, alerts), some are quick manual tasks (screenshots, idea capture). None require deep effort.',
+    summary:'Where intelligence comes from. Reddit and News RSS are automated via Miniflux. Competitor emails arrive via Gmail forwarding + Milled.com. Social content and ideas are manual but lightweight.',
     nodes:[
-      { label:'Competitor Blogs & News', mode:'auto', tools:['miniflux','galerts'], note:'Fully automated. Miniflux (on Linux desktop) subscribes to competitor RSS feeds — new posts arrive without you doing anything. Google Alerts emails keyword mentions daily.' },
-      { label:'Competitor Social Content', mode:'manual', tools:['ytdlp'], note:'Manual — 10–15 min/week. Scroll 2–3 competitor accounts, screenshot anything interesting, drop into Google Drive. Use yt-dlp to save Reels/TikToks locally for hook analysis.' },
-      { label:'Proxy Pain Points (no customers yet)', mode:'manual', tools:['reddit','amazon','galerts'], note:'Manual browsing — replaces real customer data while your audience is small. Read r/dogtraining threads, scan 3-star Amazon reviews on competitor products, note recurring complaints.' },
-      { label:'Trend Research', mode:'manual', tools:['exploding','chatgpt'], note:'Quarterly task — 20 minutes. Search your product categories in Exploding Topics. Ask ChatGPT to browse for current trends in premium dog accessories and training gear.' },
-      { label:'Your Ideas (away from desk)', mode:'manual', tools:['applenotes'], note:'Capture on iPhone the moment an idea hits. Apple Notes is already on your phone — open it, type, done. Sync to Mac via iCloud. Batch-move to Obsidian/Drive during weekly planning.' },
-      { label:'Your Ideas (at desk) & Brand Info', mode:'manual', tools:['obsidian','gdrive'], note:'Longer notes, product details, and brand thinking go in Obsidian (private, local, fast). Product specs and final brand docs live in Google Drive where Claude can read them.' },
+      {label:'Reddit Community Signals', mode:'auto', tools:['reddit','miniflux'], note:'Fully automated. r/dogtraining, r/dogs, r/puppy101 subscribed as RSS in Miniflux Category 2. n8n fetches weekly. First run captured a live treat pouch request — direct BWT sales opportunity.'},
+      {label:'Competitor Blog & News RSS', mode:'auto', tools:['miniflux','galerts'], note:'Miniflux Category 3 (News). Currently capturing Dogster and Whole Dog Journal. Add competitor RSS feeds as you find them. Google Alerts catches brand mentions and keyword news daily.'},
+      {label:'Competitor Marketing Emails', mode:'auto', tools:['gmail','milled'], note:'Gmail forwarding rules route competitor emails to a label. Milled.com subscriptions deliver brand digests — captured first Wilderdog email in test run. n8n Gmail node reads this label weekly.'},
+      {label:'Competitor Social Content', mode:'manual', tools:['ytdlp'], note:'Manual — 10–15 min/week. Scroll competitor accounts, screenshot or save with yt-dlp. Store in Drive: 6.Screenshots+Inspiration/Competitors/[Brand]. Claude cannot view images/video — this folder is for your reference only.'},
+      {label:'Proxy Pain Points (no customers yet)', mode:'manual', tools:['amazon','galerts'], note:'Monthly manual session. Scan 3-star Amazon reviews on competitor products. As your own customer base grows, replace with real review and DM data.'},
+      {label:'Trend Research', mode:'manual', tools:['exploding','chatgpt'], note:'Quarterly — 20 minutes. Search product categories in Exploding Topics. Ask ChatGPT to browse for current trends. Save results to Drive 7.Research Archive.'},
+      {label:'Mobile Idea Capture', mode:'manual', tools:['applenotes'], note:'Apple Notes on iPhone — open it, type, done. Syncs to MacBook via iCloud. Batch-move to Obsidian during Monday planning. Never lose an idea because you were away from your desk.'},
+      {label:'Brand Info & Desk Ideas', mode:'manual', tools:['obsidian','gdrive'], note:'Longer thinking and product notes go in Obsidian (local, fast, private). Brand Brain working copy lives in Obsidian. Final docs and Claude-readable files live in Google Drive.'},
     ]
   },
   {
-    id:'ai', num:'02', label:'AI Research Layer', icon:'🤖', color:'var(--l2)', bg:'var(--l2-bg)', mode:'both',
-    summary:'Weekly AI session — about 30 minutes of your time. AI does the heavy lifting; you just provide the inputs and review the outputs.',
+    id:'n8n', num:'02', label:'n8n Automation Engine', icon:'⚙️', color:'var(--l2)', bg:'var(--l2-bg)', mode:'auto',
+    summary:'Runs every Monday at 8am automatically on your Linux desktop. Sleep disabled via systemctl mask. 7-node workflow fully tested and published.',
     nodes:[
-      { label:'Weekly Competitor Report', mode:'auto', tools:['claude','chatgpt'], note:'Claude reads your Drive docs + RSS summaries. Output: what competitors posted this week, content gaps, messaging angles you can own.' },
-      { label:'Market & Trend Insights', mode:'auto', tools:['chatgpt','claude'], note:'ChatGPT browses the live web for current trends. Claude synthesizes into a structured brief. Quarterly deep-dive, lighter weekly scan.' },
-      { label:'Pain Point & Opportunity Analysis', mode:'auto', tools:['claude'], note:'Paste in Reddit threads, Amazon reviews, or competitor comment sections. Claude extracts recurring pain points and maps them to content opportunities for Tomo.' },
-      { label:'SEO & Blog Topic Ideas', mode:'auto', tools:['chatgpt','claude'], note:'ChatGPT generates keyword clusters via live browsing. Claude turns them into topic ideas matched to your Brand Brain and audience.' },
-      { label:'Automation: Weekly Research Run', mode:'auto', tools:['n8n','make','cron'], note:'n8n on your Linux desktop triggers weekly: pull RSS new items → send to Claude API → append summary to Google Drive report doc. Runs while you sleep.' },
+      {label:'Node 1 — Schedule Trigger', mode:'auto', tools:['n8n'], note:'Fires every Monday at 8:00 AM. Linux desktop sleep/suspend permanently disabled. Workflow published and active in n8n.'},
+      {label:'Node 2 — Fetch Reddit (Miniflux Cat. 2)', mode:'auto', tools:['miniflux','n8n'], note:'HTTP Request to Miniflux API: /v1/categories/2/entries?status=unread&limit=15. Returns r/dogtraining, r/dogs, r/puppy101 top posts. Uses host.docker.internal for Linux Docker networking (--add-host flag applied).'},
+      {label:'Node 3 — Fetch News (Miniflux Cat. 3)', mode:'auto', tools:['miniflux','n8n'], note:'HTTP Request to Miniflux API: /v1/categories/3/entries?status=unread&limit=20. Returns competitor blog posts and industry news. Add competitor RSS feeds to Miniflux Category 3 as you find them.'},
+      {label:'Node 4 — Fetch Competitor Emails (Gmail)', mode:'auto', tools:['gmail','n8n'], note:'Gmail node reads competitor email label. Limit 20. Captures subject lines, sender, preview snippets. Milled.com digests also arrive here. No label filter applied — reads recent emails to avoid empty results.'},
+      {label:'Node 5 — Merge + Code Node (Build Prompt)', mode:'auto', tools:['n8n'], note:'Merge node (Append mode, 3 inputs) combines all data. JavaScript Code node assembles everything into one structured research prompt with date, seasonal context, and all three data sources clearly labelled.'},
+      {label:'Node 6 — Claude API (Anthropic node)', mode:'auto', tools:['claudeapi'], note:'Anthropic node. Model: claude-sonnet-4-6. System prompt = full Brand Brain (escaped, pasted directly). Generates complete 7-section BWT Marketing Intelligence Report. ~$0.03 per run.'},
+      {label:'Node 7 — Save to Google Drive', mode:'auto', tools:['gdrive','n8n'], note:'Google Drive node. Operation: Create from Text. File name: {{date}}-Weekly-Report.txt. Saved to Modest Pup → BWT-Marketing → 2.Competitor Reports (folder ID: 1GyxcdM2djmsPVFA7oTBNPhUV2wgRfTdR).'},
+      {label:'Node 8 — Email Report to Michael', mode:'auto', tools:['gmail','n8n'], note:'Gmail send node. To: msylvester@live.com. Subject: 🐾 BWT Weekly Report — [date]. Report sent as HTML for formatted reading. Arrives Monday morning before workday starts.'},
     ]
   },
   {
     id:'storage', num:'03', label:'Storage & Knowledge Base', icon:'📁', color:'var(--l3)', bg:'var(--l3-bg)', mode:'manual',
-    summary:'Your content brain. Organized from day one so Claude can always find what it needs and you can always find what you saved.',
+    summary:'Your content brain. Google Drive is your central hub — Claude can read it directly. Obsidian is your private working space. Both stay in sync via Syncthing.',
     nodes:[
-      { label:'Brand Brain (your working copy)', mode:'manual', tools:['obsidian'], note:'Your living document — voice, audience, USPs, what Tomo is NOT, winning hooks. You edit this constantly in Obsidian. Plain text, always on your machine.' },
-      { label:'Brand Brain (Claude\'s copy)', mode:'manual', tools:['gdocs'], note:'Mirror of your Brand Brain in Google Docs. Claude reads this via MCP at the start of every session. Update it monthly from your Obsidian version.' },
-      { label:'Competitor Reports & Research', mode:'auto', tools:['gdrive','obsidian'], note:'Weekly AI reports auto-saved here by n8n. Naming: YYYY-MM-DD-report.md. Claude can search this folder for historical context.' },
-      { label:'Content Ideas & Briefs', mode:'manual', tools:['gdrive','obsidian'], note:'One note per idea: topic, angle, source, target keyword. These become the inputs for blog drafts. Keep 10–20 ideas queued at all times.' },
-      { label:'Blog Drafts (AI-written)', mode:'auto', tools:['gdocs'], note:'Claude writes full drafts directly into Google Docs. You open the doc, read, and edit. Your editing workspace — not a blank page.' },
-      { label:'Social Content & Screenshots', mode:'manual', tools:['gdrive','syncthing'], note:'Caption drafts, script ideas, saved competitor screenshots. Syncthing keeps this folder in sync between Linux and MacBook automatically.' },
+      {label:'Brand Brain (working copy)', mode:'manual', tools:['obsidian'], note:'Living document in Obsidian. Voice, audience, USPs, what Tomo is NOT, winning hooks. Edit constantly. Plain text — yours forever. Syncthing keeps it on both machines.'},
+      {label:'Brand Brain (Claude\'s copy)', mode:'manual', tools:['gdocs'], note:'Mirror of Brand Brain in Google Docs. Claude reads via MCP at start of every manual session. Also loaded as system prompt in n8n Anthropic node. Update monthly from Obsidian version.'},
+      {label:'Competitor Reports (auto-saved weekly)', mode:'auto', tools:['gdrive'], note:'Weekly AI reports auto-saved by n8n every Monday. Naming: YYYY-MM-DD-Weekly-Report.txt. First real report generated May 14, 2026 — 7 sections, specific hooks, Wild One stockout opportunity flagged.'},
+      {label:'Content Ideas & Briefs', mode:'manual', tools:['obsidian','gdrive'], note:'One note per idea: topic, angle, source, target keyword. Goal: keep 10+ ideas queued so you never start from zero.'},
+      {label:'Blog Drafts (AI-written)', mode:'auto', tools:['gdocs'], note:'Claude writes full drafts directly into Google Docs. You open the doc, read, and edit. Not a blank page — a starting point that already knows your brand.'},
+      {label:'Screenshots + Inspiration', mode:'manual', tools:['gdrive'], note:'Subfolders: Competitors/[Brand], Inspiration/Hooks+Captions, Inspiration/Visual Style, Reddit+Community, Google Alerts. Claude cannot view images — your personal reference library only.'},
+      {label:'File Sync (Linux ↔ Mac)', mode:'auto', tools:['syncthing'], note:'Systemd user service on Linux. Syncs BWT-Vault between Linux desktop and MacBook automatically. No cloud, no subscription, no middleman.'},
     ]
   },
   {
     id:'human', num:'04', label:'Human Decision Layer', icon:'🧑‍💼', color:'var(--l4)', bg:'var(--l4-bg)', mode:'manual',
-    summary:'This layer never gets automated. 30 minutes every Monday morning. Your taste and judgment protect the brand.',
+    summary:'This layer never gets automated. 30 minutes every Monday morning. Your taste, voice, and brand judgment are what protect Better With Tomo.',
     nodes:[
-      { label:'Review Weekly AI Research', mode:'manual', tools:['gdocs','obsidian'], note:'Read the weekly report. Highlight what\'s genuinely relevant to Tomo. Ignore the rest — AI will over-produce, you filter.' },
-      { label:'Choose Topics & Approve Angles', mode:'manual', tools:['obsidian','applenotes'], note:'Pick 2–3 content directions this week. Write one sentence per topic: the angle, the hook, the point. This becomes the brief for Claude.' },
-      { label:'Protect Brand Voice', mode:'manual', tools:['claude','ltool'], note:'Final say on everything. Claude checks brand voice alignment, LanguageTool catches grammar — but your instinct about what sounds like Tomo is the real filter.' },
+      {label:'Read Weekly AI Report', mode:'manual', tools:['gdrive','gmail'], note:'Report arrives in msylvester@live.com AND saves to Google Drive every Monday at 8am. Read over coffee. Highlight what\'s genuinely relevant to Tomo. AI over-produces — you filter.'},
+      {label:'Choose Topics & Approve Angles', mode:'manual', tools:['obsidian','applenotes'], note:'Pick 2–3 content directions this week. Write one sentence per topic: the angle, the hook, the point. This becomes the brief for Claude. Takes 10 minutes.'},
+      {label:'Protect Brand Voice', mode:'manual', tools:['claude','ltool'], note:'Final say on everything. Claude checks brand voice alignment on request. LanguageTool catches grammar. Your instinct about what sounds like Tomo is the real filter — never skip this.'},
+      {label:'Project & Task Tracking', mode:'manual', tools:['asana'], note:'Asana project: BWT Workflow Setup. 7+ phases, 30+ tasks with full step-by-step instructions. Claude connected via MCP — tasks can be created and updated directly from conversation.'},
     ]
   },
   {
     id:'creation', num:'05', label:'Content Creation Layer', icon:'✍️', color:'var(--l5)', bg:'var(--l5-bg)', mode:'both',
     summary:'AI does the heavy writing. You direct, edit, film, and make the final call. Never publish AI copy verbatim — your edit is what makes it Tomo.',
     nodes:[
-      { label:'Blog Post — AI Full Draft', mode:'auto', tools:['claude','gdocs'], note:'You give Claude: topic, angle, target keyword, and 2–3 bullet points. Claude writes the full post — intro, H2s, body, conclusion — directly into a Google Doc. You read and edit.' },
-      { label:'Blog Post — Your Edit', mode:'manual', tools:['gdocs','ltool'], note:'Open the Google Doc. Change anything that doesn\'t sound like you. Add a real Tomo story, a photo reference, your opinion. LanguageTool catches grammar. This edit is what makes it authentic.' },
-      { label:'Blog Post — Final Polish', mode:'auto', tools:['claude'], note:'After your edit, ask Claude to: tighten the intro, check brand voice against Brand Brain, write the meta description, and suggest internal link opportunities. One prompt, 2 minutes.' },
-      { label:'TikTok / Reels Script', mode:'auto', tools:['claude','chatgpt'], note:'Claude writes 3 hook variants + a short script for each topic. You pick one, rewrite the opening in your own voice, then film. Filming is always manual — real Tomo moments only.' },
-      { label:'Instagram Captions', mode:'auto', tools:['claude'], note:'Claude generates 3–5 caption options per post from a one-line brief. You pick the closest one, edit it to sound like you, add your hashtags. Takes 5 minutes per post.' },
-      { label:'Social Graphics & Thumbnails', mode:'manual', tools:['canva','gimp'], note:'Canva free tier for Instagram graphics and Pinterest pins — fast and template-driven. GIMP for product photo editing when you need more control.' },
-      { label:'Video Editing', mode:'manual', tools:['kdenlive','davinci'], note:'Always manual. Kdenlive for quick TikTok/Reels cuts on Linux. DaVinci Resolve free if you want color grading or more detailed editing.' },
-      { label:'Email / Newsletter Draft', mode:'auto', tools:['claude','gdocs'], note:'Claude repurposes any blog post into an email draft in under a minute. Give it the blog URL or paste the summary — ask for a 200-word email version with a subject line.' },
+      {label:'Blog Post — AI Full Draft', mode:'auto', tools:['claude','gdocs'], note:'Give Claude: topic, angle, target keyword, 2–3 bullet points. Claude writes the full post — intro, H2s, body, conclusion — directly into a Google Doc. Not a blank page.'},
+      {label:'Blog Post — Your Edit', mode:'manual', tools:['gdocs','ltool'], note:'Open the Google Doc. Change anything that doesn\'t sound like you. Add a real Tomo/Barley moment. Add your opinion. LanguageTool catches grammar. This edit makes it authentic.'},
+      {label:'Blog Post — Final Polish', mode:'auto', tools:['claude'], note:'After your edit, ask Claude to: tighten the intro, check brand voice, write the meta description, suggest internal link opportunities. One prompt, 2 minutes.'},
+      {label:'TikTok / Reels Script', mode:'auto', tools:['claude','chatgpt'], note:'Claude writes 3 hook variants + short script from weekly report topics. You pick one, rewrite the opening line in your voice, then film. Always manual filming — real moments only.'},
+      {label:'Instagram Captions', mode:'auto', tools:['claude'], note:'Claude generates 3–5 caption options per post from a one-line brief. You pick the closest, edit to sound like you, add hashtags. Takes 5 minutes per post.'},
+      {label:'Social Graphics & Thumbnails', mode:'manual', tools:['canva','gimp'], note:'Canva free tier for Instagram graphics and Pinterest pins. GIMP for product photo editing when you need more precision.'},
+      {label:'Video Editing', mode:'manual', tools:['kdenlive','davinci'], note:'Always manual. Kdenlive for quick TikTok/Reels cuts on Linux. DaVinci Resolve free for color grading.'},
+      {label:'Email / Newsletter Draft', mode:'auto', tools:['claude','gdocs'], note:'Claude repurposes any blog post into an email draft in under a minute. Give it the blog URL or summary — ask for a 200-word email version with a subject line.'},
     ]
   },
   {
     id:'publish', num:'06', label:'Publishing Layer', icon:'🚀', color:'var(--l6)', bg:'var(--l6-bg)', mode:'manual',
-    summary:'Getting content live. Mostly manual — timing and authenticity matter more than automation at this stage.',
+    summary:'Getting content live. Mostly manual — timing and authenticity matter more than automation at this stage for a small brand.',
     nodes:[
-      { label:'Shopify Blog', mode:'manual', tools:['shopify','gdocs'], note:'Copy final draft from Google Docs into Shopify. Ask Claude to format the meta description, page title, and image alt text before you paste. Manual publish — you control timing.' },
-      { label:'Instagram & TikTok', mode:'manual', tools:['instagram','tiktok','buffer'], note:'Manual publish for authenticity. Optional: use Buffer free tier to batch-schedule a week of posts on Sunday evening instead of posting daily.' },
-      { label:'Pinterest', mode:'manual', tools:['pinterest','canva'], note:'Repurpose every blog post into a Pinterest pin. Canva exports at the right dimensions. High ROI for product brands — worth doing consistently.' },
+      {label:'Shopify Blog', mode:'manual', tools:['shopify','gdocs'], note:'Copy final draft from Google Docs. Ask Claude to format meta description, page title, and image alt text. Manual publish — you control timing and SEO metadata.'},
+      {label:'Instagram & TikTok', mode:'manual', tools:['instagram','tiktok','buffer'], note:'Manual publish for authenticity. Optional: Buffer free tier to batch-schedule a week of posts on Sunday evenings. Real Tomo/Barley content outperforms polished for small dog brands.'},
+      {label:'Pinterest', mode:'manual', tools:['pinterest','canva'], note:'Repurpose every blog post as a Pinterest pin. High ROI for product brands. Canva exports at correct dimensions. Consistent pinning compounds over time.'},
     ]
   },
   {
     id:'feedback', num:'07', label:'Feedback Loop', icon:'🔄', color:'var(--l7)', bg:'var(--l7-bg)', mode:'both',
-    summary:'Monthly 30-minute review. The insights you feed back in make every future AI session smarter — your compound advantage.',
+    summary:'Monthly 30-minute review. The insights you feed back in make every future AI report smarter. This compounding loop is your long-term advantage.',
     nodes:[
-      { label:'Track Performance', mode:'manual', tools:['ganalytics','gsheets'], note:'Google Analytics for blog traffic and top pages. A simple Google Sheet for social performance (saves, comments, reach). Manual tracking keeps you honest.' },
-      { label:'Analyze Winning Patterns', mode:'auto', tools:['claude','gsheets'], note:'Export your top 10 posts to CSV. Ask Claude: "What patterns do you see in my best-performing content?" Takes 10 minutes. Gives you next month\'s content direction.' },
-      { label:'Update Brand Brain', mode:'manual', tools:['obsidian','gdocs'], note:'Add winning hooks, topics, formats, and angles to your Brand Brain. Update both the Obsidian copy (your working version) and the Google Docs copy (Claude\'s version).' },
-      { label:'Feed Back Into Research', mode:'auto', tools:['claude','n8n'], note:'Updated Brand Brain = smarter Claude research next cycle. n8n can auto-append this month\'s top performers to the weekly research prompt template.' },
+      {label:'Track Performance', mode:'manual', tools:['ganalytics','gsheets'], note:'Google Analytics for blog traffic and top pages. Google Sheets for social performance (saves, comments, reach). Manual tracking keeps you close to the data.'},
+      {label:'Analyze Winning Patterns', mode:'auto', tools:['claude','gsheets'], note:'Export top 10 posts to CSV. Ask Claude: "What patterns do you see in my best-performing content?" Takes 10 minutes. Gives you next month\'s content direction with specifics.'},
+      {label:'Update Brand Brain', mode:'manual', tools:['obsidian','gdocs'], note:'Add winning hooks, topics, formats to Brand Brain sections 15 and 16. Update both Obsidian copy (working) and Google Docs copy (Claude\'s version). This is the key step.'},
+      {label:'Feed Back Into n8n', mode:'auto', tools:['n8n','claudeapi'], note:'Updated Brand Brain = smarter Claude research next cycle. The n8n system prompt references your Brand Brain — updating it improves every future Monday report automatically.'},
     ]
   },
 ];
 
-// ── STATE ─────────────────────────────────────────────────────────────────────
 let openLayers = new Set(['inputs']);
 let activeTool = null;
 
-// ── RENDER ────────────────────────────────────────────────────────────────────
 function render() {
   const wf = document.getElementById('workflow');
   wf.innerHTML = '';
-
   LAYERS.forEach((layer, i) => {
-    // layer wrapper
     const layerEl = document.createElement('div');
     layerEl.className = 'layer';
 
-    // header
-    const hdr = document.createElement('button');
-    hdr.className = 'layer-header' + (openLayers.has(layer.id) ? ' open' : '');
-    hdr.style.setProperty('--layer-color', layer.color);
-    hdr.style.setProperty('--layer-bg', layer.bg);
-    hdr.onclick = () => { openLayers.has(layer.id) ? openLayers.delete(layer.id) : openLayers.add(layer.id); render(); };
-
-    const modeBadge = MODE[layer.mode];
-    hdr.innerHTML = `
+    const m = MODE[layer.mode];
+    const isOpen = openLayers.has(layer.id);
+    const btn = document.createElement('button');
+    btn.className = 'layer-btn' + (isOpen ? ' open' : '');
+    btn.style.setProperty('--layer-color', layer.color);
+    btn.style.setProperty('--layer-bg', layer.bg);
+    btn.onclick = () => { isOpen ? openLayers.delete(layer.id) : openLayers.add(layer.id); render(); };
+    btn.innerHTML = `
       <div class="layer-icon" style="--layer-color:${layer.color}">${layer.icon}</div>
       <div class="layer-meta">
         <div class="layer-title-row">
           <span class="layer-title">${layer.label}</span>
           <span class="layer-num">Layer ${layer.num}</span>
-          <span class="badge" style="color:${modeBadge.color};background:${modeBadge.bg};border-color:color-mix(in srgb,${modeBadge.color} 30%,transparent)">${modeBadge.label}</span>
+          <span class="badge" style="color:${m.color};background:${m.bg};border-color:color-mix(in srgb,${m.color} 30%,transparent)">${m.label}</span>
         </div>
-        ${!openLayers.has(layer.id) ? `<div class="layer-subtitle">${layer.summary}</div>` : ''}
+        ${!isOpen ? `<div class="layer-sub">${layer.summary}</div>` : ''}
       </div>
-      <span class="layer-chevron">▾</span>
-    `;
-    layerEl.appendChild(hdr);
+      <span class="layer-chevron">▾</span>`;
+    layerEl.appendChild(btn);
 
-    // body
-    if (openLayers.has(layer.id)) {
+    if (isOpen) {
       const body = document.createElement('div');
       body.className = 'layer-body';
       body.innerHTML = `<p class="layer-summary">${layer.summary}</p>`;
-
       const grid = document.createElement('div');
       grid.className = 'nodes-grid';
-
       layer.nodes.forEach(node => {
-        const m = MODE[node.mode];
+        const nm = MODE[node.mode];
         const card = document.createElement('div');
         card.className = 'node-card';
         card.style.setProperty('--layer-color', layer.color);
-
-        const toolChips = node.tools.map(tk => {
+        const chips = node.tools.map(tk => {
           const t = TOOLS[tk];
-          const c = COST[t.cost];
-          const isActive = activeTool === tk;
-          return `<button class="tool-chip${isActive ? ' active' : ''}" 
-            style="--chip-color:${c.color};--chip-bg:${c.bg}"
-            onclick="selectTool('${tk}',event)">
-            <span>${t.icon}</span>
-            <span class="chip-name">${t.name}</span>
-            <span class="chip-cost">${c.label}</span>
+          if (!t) return '';
+          const c = COST[t.cost] || {color:'var(--text-dim)',bg:'var(--surface)',label:t.cost};
+          const active = activeTool === tk;
+          return `<button class="tool-chip${active?' active':''}" style="--chip-color:${c.color};--chip-bg:${c.bg}" onclick="selectTool('${tk}',event)">
+            <span>${t.icon}</span><span class="chip-name">${t.name}</span><span class="chip-cost">${c.label}</span>
           </button>`;
         }).join('');
-
         card.innerHTML = `
           <div class="node-top">
-            <div class="node-label">${node.label}</div>
-            <span class="badge" style="color:${m.color};background:${m.bg};border-color:color-mix(in srgb,${m.color} 30%,transparent);font-size:9px">${m.label}</span>
+            <div class="node-label"><span style="color:${layer.color};margin-right:5px">›</span>${node.label}</div>
+            <span class="badge" style="color:${nm.color};background:${nm.bg};border-color:color-mix(in srgb,${nm.color} 30%,transparent);font-size:9px">${nm.label}</span>
           </div>
-          <div class="node-tools">${toolChips}</div>
-          <div class="node-note">${node.note}</div>
-        `;
+          <div class="node-tools">${chips}</div>
+          <div class="node-note">${node.note}</div>`;
         grid.appendChild(card);
       });
-
       body.appendChild(grid);
       layerEl.appendChild(body);
     }
 
     wf.appendChild(layerEl);
-
-    // arrow between layers
     if (i < LAYERS.length - 1) {
-      const arrow = document.createElement('div');
-      arrow.className = 'flow-arrow';
-      arrow.innerHTML = '<div class="line"></div><div class="tip"></div>';
-      wf.appendChild(arrow);
+      const arr = document.createElement('div');
+      arr.className = 'flow-arrow';
+      arr.innerHTML = '<div class="ln"></div><div class="tip"></div>';
+      wf.appendChild(arr);
     }
   });
-
-  // update expand button
-  const btn = document.getElementById('expandBtn');
-  btn.textContent = openLayers.size === LAYERS.length ? 'Collapse all' : 'Expand all';
+  document.getElementById('expandBtn').textContent = openLayers.size === LAYERS.length ? 'Collapse all' : 'Expand all';
 }
 
 function toggleAll() {
-  if (openLayers.size === LAYERS.length) {
-    openLayers = new Set();
-  } else {
-    openLayers = new Set(LAYERS.map(l => l.id));
-  }
+  openLayers = openLayers.size === LAYERS.length ? new Set() : new Set(LAYERS.map(l => l.id));
   render();
 }
 
 function selectTool(key, e) {
   e.stopPropagation();
-  if (activeTool === key) {
-    activeTool = null;
-    document.getElementById('toolPopup').style.display = 'none';
-    render();
-    return;
-  }
+  if (activeTool === key) { activeTool = null; document.getElementById('toolPopup').style.display = 'none'; render(); return; }
   activeTool = key;
   showPopup(key);
   render();
@@ -522,7 +397,7 @@ function selectTool(key, e) {
 
 function showPopup(key) {
   const t = TOOLS[key];
-  const c = COST[t.cost];
+  const c = COST[t.cost] || {color:'var(--text-dim)',bg:'var(--surface)',label:t.cost};
   const popup = document.getElementById('toolPopup');
   popup.style.setProperty('--popup-color', c.color);
   popup.style.setProperty('--popup-bg', c.bg);
@@ -533,13 +408,8 @@ function showPopup(key) {
   costEl.style.cssText += `;color:${c.color};background:${c.bg};border-color:color-mix(in srgb,${c.color} 30%,transparent)`;
   document.getElementById('popupNote').textContent = t.note;
   const urlEl = document.getElementById('popupUrl');
-  if (t.url) {
-    urlEl.textContent = '↗ ' + t.url;
-    urlEl.href = 'https://' + t.url;
-    urlEl.style.display = 'inline-block';
-  } else {
-    urlEl.style.display = 'none';
-  }
+  if (t.url) { urlEl.textContent = '↗ ' + t.url; urlEl.href = 'https://' + t.url; urlEl.style.display = 'inline-block'; }
+  else { urlEl.style.display = 'none'; }
   popup.style.display = 'block';
 }
 
@@ -549,15 +419,10 @@ function closePopup() {
   render();
 }
 
-// close popup on outside click
-document.addEventListener('click', (e) => {
-  const popup = document.getElementById('toolPopup');
-  if (activeTool && !popup.contains(e.target) && !e.target.closest('.tool-chip')) {
-    closePopup();
-  }
+document.addEventListener('click', e => {
+  if (activeTool && !document.getElementById('toolPopup').contains(e.target) && !e.target.closest('.tool-chip')) closePopup();
 });
 
-// initial render
 render();
 </script>
 </body>
